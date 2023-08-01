@@ -466,13 +466,13 @@ export default function AgentCreate({
       "permission_type": permission_type,
       "LTM_DB": longTermMemory ? database : null,
       "user_timezone": getUserTimezone(),
-      "knowledge": toolNames.includes('Knowledge Search') ? selectedKnowledgeId : null,
+      "knowledge": toolNames.includes('Knowledge Search') ? selectedKnowledgeId ? selectedKnowledgeId : null : null,
     };
 
     const scheduleAgentData = {
       "agent_config": agentData,
       "schedule": scheduleData,
-    }
+    } 
 
     createAgent(createModal ? scheduleAgentData : agentData, createModal)
       .then((response) => {
